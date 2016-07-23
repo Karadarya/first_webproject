@@ -18,16 +18,14 @@ class Score(models.Model) :
         return "%s (%s)" %(self.score, self.rater)
 
 class Post(models.Model) :
-    author = models.ForeignKey('auth.User')
+    author = models.ForeignKey('auth.User', verbose_name='author', related_name='posts')
     title = models.CharField(max_length=200)
     #picture = models.ImageField()
     text = models.TextField()
-    public_post = models.BooleanField(default=True)
+    public_post = models.BooleanField('public', default=True)
     published_date=models.DateTimeField(default=timezone.now)
     tags=models.ManyToManyField(Tag, blank=True)
     scores = models.ManyToManyField(Score, blank=True)
 
     def __str__(self):
         return self.title
-
-
