@@ -1,0 +1,17 @@
+<a class="lead" href="{{ post.url }}">{{ post.title }}</a>
+{% if not post.public_post %}
+  <span class="label label-warning">publishing denied</span>
+{% endif %}
+{% if post.text %}
+  <br>{{ post.text|linebreaksbr }}
+{% endif %}
+
+{% if post.tags.count %}
+  <br>
+  {% for tag in post.tags.all %}
+    <span class="label label-primary">{{ tag|lower }}</span>&nbsp
+  {% endfor %}
+{% endif %}
+<br> by <a href="{% url "user_post_list" post.author.username %}">
+    {{ post.author.username }}</a>
+  {{ post.published_date|timesince }} ago

@@ -1,0 +1,9 @@
+{% extends "myapp/post_list.html" %}
+
+{% block title %}{{ author.username }}'s posts{% endblock %}
+
+{% block heading %}
+  <h2>{{ author.username }}'s posts<br>
+    <small>{{ posts.count }} posts in total</small>
+  </h2>
+{% endblock %}
