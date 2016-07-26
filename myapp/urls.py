@@ -17,7 +17,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^user/(?P<username>[-\w]+)/$', views.user_post_list, name='user_post_list'),
+    url(r'^user/(?P<username>[\S]+\w)/$', views.user_post_list, name='user_post_list'),
     url(r'^create/$', views.post_create,
         name='post_create'),
     url(r'^register/$', views.register_user, name='register_user'),
